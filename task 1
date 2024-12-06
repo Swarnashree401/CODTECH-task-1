@@ -1,0 +1,147 @@
+
+//This HTML code outlines a basic website with multiple sections. It includes a navigation bar with a logo, links to different sections (home, about, services, etc.), a hero section with a welcome message and buttons, a products section with images and prices, a secondary banner, and a footer with contact information and social media links. The structure is designed to be enhanced with an external stylesheet (styles.css) for layout and styling, with various sections of content structured to create a visually appealing landing page.//
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Website</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A brief description of your website goes here.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    
+</head>
+<body>
+
+    <header>
+    <nav class="navbar">
+        <div class="logo">MyLogo</div>
+          <a href='#'><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIHBg4TDxAVFhMWFRUQFRUQFRYVFRgZFx8dHBkVFRUYHishGBolGxUWITEhJiktLjoxGB8zODMsNy4tLi4BCgoKDg0OGBAPFjcdGh0rLysrKy0tKysrKy0rNystLSstLTctLS0rLSstKy0tLSsrNzcrKzc3KysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEBAAIDAQEAAAAAAAAAAAAABgQFAQMIBwL/xABDEAACAQMBBAUHCAgGAwAAAAAAAQIDBBEFBhIhMQcTQVFhFBUicYGRoSMyVGKTscHSJDNScoKSlNElQkRTVcIng6L/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQMC/8QAHBEBAQEAAgMBAAAAAAAAAAAAABEBIWECElEx/9oADAMBAAIRAxEAPwD7UADBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABq9odeobPWPW3EsJ8IxjxnOX7MV2+vku1omqWpazri37e3o2tJ8Yu5zKq13uPZ7Yr2lzBcgiKlfXNKW9OFtdQXONLMKmPq8sv2P1G72Y2no7RUJdXmFWHCpRqcKkHy4rtWeGfY8PgIN4ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA12u6zR0HTpVq8sRXBJcZSk+UYrtfP3NkvHabVL6lvUNHfVyXourWjGbT5PEsY93vLB1bN0FtXtVdX1b0qVCo7a1g+MU48XUx2vin65eCxfHzjZ6eqbP6aqNHSU4qUp5qXNNyzLnlrBsvP2s/8RD+oh/cu4LUhekCy8zXFHVLZYqUZxjXS5VKcmo+ku18Us+K7kdvn3Wf+Ih/UQ/uYmr3uratptWhV0iO5UjuvduKee/Ky+fAZkF5b1lcUITi8xlFTT8Gsr4M7CAsdW1bStPpU/NG9TpQjDhcRlNxisf5c5eF2Ip9mdoqW0VnKdJSjKL3KlOfCcJdz8ODw/B8sNEg3AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAh9rIrVNvNHtmt6EOsuqkXy9FPcbXrhj+ItLivG2oTnUkoxinKUpPCSXFtvuI3Rv8Q6UNRq9lCjC2Xrlut/FTNB0vbROVeNlSliMd2pXx2t8YQfqWJP1xOpeBm6l0s0qUpK2tpzxlKVWSpxfiklJ49eCt0Tam01e0hKFxTUmk5QlJQnF9qcZcefaeepLD4nDWTvfDEejtQ2gtNNouVa5pRS7N9OT8FGOW36kQ9p0tw61qtayUcvEqUlJ4zwbhLGHjs3j5Qlg5Jnhg9L6bqFPVLGnVoyUqc1lNfFNdjT4NeBIwh5r6V2orELq23njgnUg3x9eIN/xEd0V7RPTNYVtOXyNeSSzyjV5Ra/e4Rf8JZbffoWvaLdclC4dCT+rVx+Cn7ySbFW4AOAAAAAAAAAAAAAAAAAAAAAAAAAOG8I5NVtVeeb9m7yp2xpTx62sR+LQE90Xrym0v7p8fKLqpNP6q4r4zkiN1bYPU9U1K4rSpQzUnOfpVYZSb4Lg+xYXsPo3R7Z+Q7GWMcY3qfWv/2tz+6S9xRLmde00eaNVh1eqV4rlGpOC/hbX4GKd9/PrL+tLvqTl75NnQaoBvCBxLjFgWc+jvUI1XOjCGN7fpvrYJ4TzB4fsZe9JNrO+2DqSkt2pBUq7XD0ZJpS4ruUpFPpFTrdJtpd9KnL3xTPzrVn5x0e5o/7lKdP+ZNL44MvblXZpl2r/TaFVcqlOFT+ZJ/iZJK9GN55bsVa98FKi/Ddbwv5XEqjnQAAAAAAAAAAAAAAAAAAAAAAAAI3pWruOy8aUfnV61Kgvfvf9V7yyIna/wDTtttEt+yM6l1NfuYcX/8AEl7S4LK2oK2t4QjyhGMF6orC+4XE+qt5y7oyl7lk7DVbV3HkuzF9PuoVcevdeCDznvb3Hv4+8HCa7znJugAAPROx9Xr9lbCXfQpfCKX4G4Jboyr9fsTafV6yH8s5Y+GCpMNVE9HX6FqOsWv+1cupFfVqZxjwxBe8tiIt/wDD+litHlG5tVP1zg0vuhL3luXQABAAAAAAAAAAAAAAAAAAAAAACIUv/Lz6x4/QsUs8n6Sbx446z3MtzQbVbMR1+NKcakqNxSeaVanzj4SXDMfavvTuDfmFrNg9U0yrRVWdPfSW/T4TXFPg/Zj2kutO1ymsK+tpJcMyp4b8XiHM58h136Za/Zv8gnaMeXRqp/O1G5frcX950T6KaU+d7XfrVP8AsZ/kOu/TLX7N/kHkOu/TLX7N/kLd+jAh0UUIf6qp7adF/fE7Y9GFKPK6l/T2r++mzK8h136Za/Zv8g8h136Za/Zv8gu/RQbO6R5j07qlVdRb0pJuFOnjOOG7Tio81nl2m0IvyHXfplr9m/yB2Guv/WWvspv8hJ2OvappdIehdW/lPllJL9hpcX4Y6z3MuCZ2Z2UemXs7m5ryuLqa3XUksRjH9mEezkuPhwS45phqgAIAAAAAAAAAAAAAAAAAAAB8EDhrK4gfL7e81HbvULiVpcu2tactyLi5RbfZnd4ylji+KSylxNi56po+yuqeV1U3TgnQrRknUeXiTzzxjGHJJ5zzNZaUr/o/v7iFC0lc2tSW/DcUm12LO4m4yxhNNYeE0bKU9T1vZPVPK6Cjv015PRjHFTnmSxzawlz45zwO0bjZvWZUtgKd1cSc3ClOcm+Mpbjkll9r4JZJTTLfV9rraV1C96iDclSpxlOMXutprEVyymsyy+D4HOzd5d3GkUtNradVjRnGdGVdxnHdUt577UoY4Nrhns9h+dJ1LVNj7R2j0914xcuqnBTlH0m3zgnmLbbw91rIg2GgapebSaVe2U67oXtCUV10VxcVLEk93GJei1vR7GjSaRZalqW0V3ax1SrGVu+M3OpJPDS4Rz49pWdHmz9ewndXV7wr3EsuPDMY5cm3jgm2+XYkvFHXsppta32+1erOlKNOfzJyWIy3mmt19vBdgv6MXUNo5aV0ldXcXLjbKhFOMuEN5xypbq/zOR+tntop6t0lXMKdw6lr1OacU/k+Cp8Uu/ec+PideqbOPVuk1yr28p2zopuTTUMqOEt5PnvdmT9bN7Py0npLuXTt5QtlRxCXHc9JU8pSb4veU+HgOBh7Pa/dV9ldeqTrzc6XWOnKTy4ejL5vclhYRjaDtzVuNk76lVqtXVOjOpRqt+lJJd75zj393qZ37O6Lc0dlNepzoTjOp1ipxcWnPEZfM7+a4r2GHc7EVLzYW1qxpSjd0oz3oNYnOm5yai1+0k8peLXcXgZlXa+5tNitOjTk53dy6lOM5+lJKE93PHnJuUEm/Fvkdj0fWtHqUqsb+NaTa36Vaq9zx/WYTX7uH3HRV2TurnYvTKlGDjdWzqVFTl6MnGU95JJ8pJxg0n4mq2gtr7ba+oKenTp1YLq5VJ78aWM5banFJLOXwbfZxA+zx+avwOTF0qz836ZQpbzl1dOFPL5vdSWfgZRmoAAAAAAAAAAAAAAAAAAAAAAACfVS58/JfK7vXNNbseo8n6t4kp4+f1mO3eznhumHbVNQjSuIz32/J7qdKe7FPrHL5KDWPnxSeOxxcc5eSsBaNVG5qXFSycI1FHrJRrKcHB4VOfzlJJpb+5xXaaa3q6grG4U1NzVrUnSmoxy6km9yDjj9ZHGOWGnF95XAUa7RJTlY+nvuWX+sU4v3TjF49ho7WrfPTK36x1VUtt11IqOc1I9bHd3eCUM7zi5Rw/RZWgUTdSpdK2h1vWJeUVlUdtHemqeJdXuLdcnHe3eKWfZk/Mad9cSsvTdN9Up1m93G+pQ4SiotSk4by3U0uLwUwFAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//9k=" alt="Logo"></a>
+          
+    </div>
+        <ul class="menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="toggle-button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+      </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+          <h1>Welcome to my Website</h1>
+          <p>Get your swag On.</p>
+          <div class="hero-buttons">
+            <a href="#services" class="btn-primary">Get Started</a>
+            <a href="#about" class="btn-secondary">Learn More</a>
+          </div>
+        </div>
+        <div class="hero-image">
+         
+        </div>
+      </section>
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products Section</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Products Section -->
+  <section class="products">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1685883518316-355533810d68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dHNoaXJ0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Product 1">
+        <h3>Product 1</h3>
+        <p>$25.00</p>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1636960377464-41b6d98466dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dHNoaXJ0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Product 2">
+        <h3>Product 2</h3>
+        <p>$30.00</p>
+      </div>
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1643881080002-afdc695936e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHRzaGlydHN8ZW58MHx8MHx8fDA%3D" alt="Product 3">
+        <h3>Product 3</h3>
+        <p>$40.00</p>
+      </div>
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1643881080002-afdc695936e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHRzaGlydHN8ZW58MHx8MHx8fDA%3D" alt="Product 4">
+        <h3>Product 4</h3>
+        <p>$20.00</p>
+      </div>
+      <!-- Product 5 -->
+      <div class="product-card">
+        <img src="https://media.istockphoto.com/id/831591110/photo/blue-t-shirts-front-and-back-used-as-design-template.webp?a=1&b=1&s=612x612&w=0&k=20&c=okYPbsxJ-4HsVwAiNgCAGI5QfmnrA9se6sUHfvLIolY=" alt="Product 5">
+        <h3>Product 5</h3>
+        <p>$35.00</p>
+      </div>
+      <!-- Product 6 -->
+      <div class="product-card">
+        <img src="https://media.istockphoto.com/id/831591130/photo/black-polo-tshirt-design-template-isolated-on-white-with-clipping-path.webp?a=1&b=1&s=612x612&w=0&k=20&c=GXHxw-UXjFD-wo72EJyJ-ueKUKN8ylH7mB9VR4MITVU=" alt="Product 6">
+        <h3>Product 6</h3>
+        <p>$25.00</p>
+      </div> 
+    </div>
+    </section>
+
+    <section class="secondary-banner">
+        <div class="banner-content">
+          <h2>Your Business Tagline Goes Here</h2>
+        </div>
+        <div class="banner-image">
+          <img src="https://plus.unsplash.com/premium_photo-1684952850890-08b775d7bc2e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dHNoaXJ0c3xlbnwwfHwwfHx8MA%3D%3D" alt="Business Banner">
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-info">
+            <h3>Business Name</h3>
+            <p>123 Business St, City, Country</p>
+            <p>Email: contact@business.com</p>
+            <p>Phone: +1 234 567 890</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+              <a href="#" class="social-icon">FB</a>
+              <a href="#" class="social-icon">IG</a>
+              <a href="#" class="social-icon">TW</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Business Name. All rights reserved.</p>
+        </div>
+      </footer>
+
+</body>
+</html>
