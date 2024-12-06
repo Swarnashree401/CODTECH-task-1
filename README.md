@@ -40,6 +40,8 @@ TECHNOLOGIES USED:
 
 HTML/CSS
 Bootstrap/Tailwind CSS
+
+![image alt](https://github.com/Swarnashree401/CODTECH-task-1/blob/30a2d2ab384f96e996676c0e2312e8963fff8075/Screenshot%20(3).png)
   
 
 
