@@ -145,3 +145,268 @@
 
 </body>
 </html>
+
+/*/ this is the script.js file which stores javascript code in a web development project /*/
+
+document.addEventListener('DOMContentLoaded', function() {
+    const workoutForm = document.getElementById('workoutForm');
+    const workoutList = document.querySelector('#workoutList ul');
+    const totalWorkouts = document.getElementById('totalWorkouts');
+    const totalDuration = document.getElementById('totalDuration');
+    const averageDuration = document.getElementById('averageDuration');
+    const totalCalories = document.getElementById('totalCalories');
+    const specificExerciseTotals = document.getElementById('specificExerciseTotals');
+    const exerciseChartCtx = document.getElementById('exerciseChart').getContext('2d');
+    const frequencyChartCtx = document.getElementById('frequencyChart').getContext('2d');
+    const progressChartCtx = document.getElementById('progressChart').getContext('2d');
+    let exerciseChart, frequencyChart, progressChart;
+
+    // Load workouts from local storage
+    loadWorkouts();
+
+    workoutForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const date = document.getElementById('date').value;
+        const exercise = document.getElementById('exercise').value;
+        const duration = document.getElementById('duration').value;
+        const calories = document.getElementById('calories').value;
+
+        if (date && exercise && duration && calories) {
+            const workoutItem = createWorkoutItem(date, exercise, duration, calories);
+            workoutList.appendChild(workoutItem);
+
+            saveWorkout(date, exercise, duration, calories);
+            updateStatistics();
+
+            workoutForm.reset();
+        }
+    });
+
+    function createWorkoutItem(date, exercise, duration, calories) {
+        const workoutItem = document.createElement('li');
+        workoutItem.textContent = `${date} - ${exercise} for ${duration} minutes, ${calories} kcal`;
+        return workoutItem;
+    }
+
+    function saveWorkout(date, exercise, duration, calories) {
+        const workouts = getWorkouts();
+        workouts.push({ date, exercise, duration: parseInt(duration), calories: parseInt(calories) });
+        localStorage.setItem('workouts', JSON.stringify(workouts));
+    }
+
+    function getWorkouts() {
+        const workouts = localStorage.getItem('workouts');
+        return workouts ? JSON.parse(workouts) : [];
+    }
+
+    function loadWorkouts() {
+        const workouts = getWorkouts();
+        workouts.forEach(workout => {
+            const workoutItem = createWorkoutItem(workout.date, workout.exercise, workout.duration, workout.calories);
+            workoutList.appendChild(workoutItem);
+        });
+        updateStatistics();
+    }
+
+    function updateStatistics() {
+        const workouts = getWorkouts();
+        const total = workouts.reduce((acc, workout) => acc + workout.duration, 0);
+        const totalKcal = workouts.reduce((acc, workout) => acc + workout.calories, 0);
+        const average = total / (workouts.length || 1);
+
+        totalWorkouts.textContent = `Total Workouts: ${workouts.length}`;
+        totalDuration.textContent = `Total Duration: ${total} minutes`;
+        averageDuration.textContent = `Average Duration: ${average.toFixed(2)} minutes`;
+        totalCalories.textContent = `Total Calories: ${totalKcal} kcal`;
+
+        const exerciseTotals = workouts.reduce((acc, workout) => {
+            if (!acc[workout.exercise]) {
+                acc[workout.exercise] = 0;
+            }
+            acc[workout.exercise] += workout.duration;
+            return acc;
+        }, {});
+
+        specificExerciseTotals.innerHTML = Object.entries(exerciseTotals)
+            .map(([exercise, duration]) => `<li>${exercise}: ${duration} minutes</li>`)
+            .join('');
+
+        updateExerciseChart(exerciseTotals);
+        updateFrequencyChart(workouts);
+        updateProgressChart(workouts);
+    }
+
+    function updateExerciseChart(exerciseTotals) {
+        if (exerciseChart) {
+            exerciseChart.destroy();
+        }
+
+        exerciseChart = new Chart(exerciseChartCtx, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(exerciseTotals),
+                datasets: [{
+                    label: 'Exercise Duration',
+                    data: Object.values(exerciseTotals),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    function updateFrequencyChart(workouts) {
+        const frequencyData = workouts.reduce((acc, workout) => {
+            if (!acc[workout.exercise]) {
+                acc[workout.exercise] = 0;
+            }
+            acc[workout.exercise] += 1;
+            return acc;
+        }, {});
+
+        if (frequencyChart) {
+            frequencyChart.destroy();
+        }
+
+        frequencyChart = new Chart(frequencyChartCtx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(frequencyData),
+                datasets: [{
+                    label: 'Frequency',
+                    data: Object.values(frequencyData),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    function updateProgressChart(workouts) {
+        const weeklyData = workouts.reduce((acc, workout) => {
+            const week = new Date(workout.date).toISOString().slice(0, 10);
+            if (!acc[week]) {
+                acc[week] = 0;
+            }
+            acc[week] += workout.duration;
+            return acc;
+        }, {});
+
+        const sortedWeeks = Object.keys(weeklyData).sort();
+        const weeklyDurations = sortedWeeks.map(week => weeklyData[week]);
+
+        if (progressChart) {
+            progressChart.destroy();
+        }
+
+        progressChart = new Chart(progressChartCtx, {
+            type: 'line[_{{{CITATION{{{_1{](https://github.com/Hamidalavi/JavaScript-step-by-step/tree/6a97d943bd685e48622cba622ec7450152d33664/Learn%2F24.%20NodeJS%20Introduction.md)[_{{{CITATION{{{_2{](https://github.com/Gisjegadeesh/Tradecomm/tree/94271f9169033d5103bc9e7a4dd658840bd656a0/src%2Fapp%2Fcomponents%2Fsme-dashboard%2Fsme-dashboard.component.ts)[_{{{CITATION{{{_3{](https://github.com/ValerioFarina/laravel-ecommerce/tree/2c1bc79cb23a6efdc9d4260784088aaf8965c14f/resources%2Fjs%2Fpages%2Fstatistics.js)[_{{{CITATION{{{_4{](https://github.com/chetansingare/first-app/tree/70e988e15c20f68194bfddfbf07694427db430c0/src%2Fcomponents%2Fchart2%2Ftopseller%2FTopSellers.js)[_{{{CITATION{{{_5{](https://github.com/starand/scrm/tree/b5f52ad7da4a3d89a4a67572746d2055f494bb19/wallet.php)[_{{{CITATION{{{_6{](https://github.com/BenBanerjeeRichards/Spotify-history-downloader/tree/68673b719c6c0e0124bad5099f188ad26310107c/client%2Fday.js)
+            document.addEventListener('DOMContentLoaded', function() {
+                const workoutForm = document.getElementById('workoutForm');
+                const workoutList = document.querySelector('#workoutList ul');
+                const totalWorkouts = document.getElementById('totalWorkouts');
+                const totalDuration = document.getElementById('totalDuration'0);
+
+/*/ this is styles.css file which defines styling of a webpage /*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.tracker {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #555;
+}
+
+#workoutList ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#workoutList li {
+    background: #f4f4f4;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+#statistics {
+    margin-top: 20px;
+}
+
+#exerciseChart {
+    max-width: 600px;
+    margin: 0 auto;
+}
